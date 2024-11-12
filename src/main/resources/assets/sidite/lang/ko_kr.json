@@ -1,0 +1,4 @@
+{
+  "commands.pos.success":"%s을(를) %s, %s, %s(으)로 이동했습니다",
+  "commands.pos.success.target":"%s을(를) %s에게로 이동했습니다"
+}

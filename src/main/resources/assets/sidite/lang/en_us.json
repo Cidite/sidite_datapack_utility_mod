@@ -1,0 +1,4 @@
+{
+  "commands.pos.success":"Moved %s to %s, %s, %s",
+  "commands.pos.success.target":"Moved %s to %s"
+}

@@ -1,0 +1,4 @@
+accessWidener v2 named
+
+#accessible class net/minecraft/server/SampleSubscriptionTracker$PlayerSubscriptionData
+#accessible method net/minecraft/server/SampleSubscriptionTracker$PlayerSubscriptionData <init> (Lnet/minecraft/server/network/ServerPlayerEntity;Lnet/minecraft/util/profiler/log/DebugSampleType;)V
