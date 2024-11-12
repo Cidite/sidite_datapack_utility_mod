@@ -20,7 +20,6 @@
 		]
 	},
 	"mixins": [
-		"sidite_utility.mixins.json",
 		{
 			"config": "sidite_utility.mixins.json",
 			"environment": "client"
