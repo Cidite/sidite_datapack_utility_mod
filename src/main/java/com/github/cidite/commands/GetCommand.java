@@ -26,7 +26,7 @@ public class GetCommand {
                                                         .then(CommandManager
                                                                 .argument("target", EntityArgumentType.entity())
                                                                 .executes((context) -> {
-                                                                    return executePosScale((ServerCommandSource)
+                                                                    return executeScale((ServerCommandSource)
                                                                             context.getSource(),
                                                                             EntityArgumentType.getEntity(context, "target"),
                                                                             EntityArgumentType.getEntity(context, "target").getX(),
@@ -34,18 +34,18 @@ public class GetCommand {
                                                                 })
                                                         )
                                                         .executes((context) -> {
-                                                            return executePosScale((ServerCommandSource)
+                                                            return executeScale((ServerCommandSource)
                                                                     context.getSource(),
                                                                     ((ServerCommandSource)context.getSource()).getEntity(),
-                                                                    ((ServerCommandSource)context.getSource()).getEntity().getPos().getX(),
+                                                                    ((ServerCommandSource)context.getSource()).getEntity().getX(),
                                                                     DoubleArgumentType.getDouble(context, "scale"));
                                                         })
                                                 )
                                                 .executes((context) -> {
-                                                    return executePos((ServerCommandSource)
+                                                    return execute((ServerCommandSource)
                                                             context.getSource(),
                                                             ((ServerCommandSource)context.getSource()).getEntity(),
-                                                            ((ServerCommandSource)context.getSource()).getEntity().getPos().getX());
+                                                            ((ServerCommandSource)context.getSource()).getEntity().getX());
                                                 })
                                         ).then(
                                         CommandManager.literal("y").then(CommandManager
@@ -53,7 +53,7 @@ public class GetCommand {
                                                         .then(CommandManager
                                                                 .argument("target", EntityArgumentType.entity())
                                                                 .executes((context) -> {
-                                                                    return executePosScale((ServerCommandSource)
+                                                                    return executeScale((ServerCommandSource)
                                                                             context.getSource(),
                                                                             EntityArgumentType.getEntity(context, "target"),
                                                                             EntityArgumentType.getEntity(context, "target").getY(),
@@ -61,18 +61,18 @@ public class GetCommand {
                                                                 })
                                                         )
                                                         .executes((context) -> {
-                                                            return executePosScale((ServerCommandSource)
+                                                            return executeScale((ServerCommandSource)
                                                                     context.getSource(),
                                                                     ((ServerCommandSource)context.getSource()).getEntity(),
-                                                                    ((ServerCommandSource)context.getSource()).getEntity().getPos().getY(),
+                                                                    ((ServerCommandSource)context.getSource()).getEntity().getY(),
                                                                     DoubleArgumentType.getDouble(context, "scale"));
                                                         })
                                                 )
                                                 .executes((context) -> {
-                                                    return executePos((ServerCommandSource)
+                                                    return execute((ServerCommandSource)
                                                             context.getSource(),
                                                             ((ServerCommandSource)context.getSource()).getEntity(),
-                                                            ((ServerCommandSource)context.getSource()).getEntity().getPos().getY());
+                                                            ((ServerCommandSource)context.getSource()).getEntity().getY());
                                                 })
                                         ).then(
                                         CommandManager.literal("z").then(CommandManager
@@ -80,7 +80,7 @@ public class GetCommand {
                                                         .then(CommandManager
                                                                 .argument("target", EntityArgumentType.entity())
                                                                 .executes((context) -> {
-                                                                    return executePosScale((ServerCommandSource)
+                                                                    return executeScale((ServerCommandSource)
                                                                             context.getSource(),
                                                                             EntityArgumentType.getEntity(context, "target"),
                                                                             EntityArgumentType.getEntity(context, "target").getZ(),
@@ -88,18 +88,18 @@ public class GetCommand {
                                                                 })
                                                         )
                                                         .executes((context) -> {
-                                                            return executePosScale((ServerCommandSource)
+                                                            return executeScale((ServerCommandSource)
                                                                     context.getSource(),
                                                                     ((ServerCommandSource)context.getSource()).getEntity(),
-                                                                    ((ServerCommandSource)context.getSource()).getEntity().getPos().getZ(),
+                                                                    ((ServerCommandSource)context.getSource()).getEntity().getZ(),
                                                                     DoubleArgumentType.getDouble(context, "scale"));
                                                         })
                                                 )
                                                 .executes((context) -> {
-                                                    return executePos((ServerCommandSource)
+                                                    return execute((ServerCommandSource)
                                                             context.getSource(),
                                                             ((ServerCommandSource)context.getSource()).getEntity(),
-                                                            ((ServerCommandSource)context.getSource()).getEntity().getPos().getZ());
+                                                            ((ServerCommandSource)context.getSource()).getEntity().getZ());
                                                 })
                                 )
                         )
@@ -112,7 +112,7 @@ public class GetCommand {
                                                         .then(CommandManager
                                                                 .argument("target", EntityArgumentType.entity())
                                                                 .executes((context) -> {
-                                                                    return executeRotationScale((ServerCommandSource)
+                                                                    return executeScale((ServerCommandSource)
                                                                                     context.getSource(),
                                                                             EntityArgumentType.getEntity(context, "target"),
                                                                             EntityArgumentType.getEntity(context, "target").getYaw(),
@@ -120,7 +120,7 @@ public class GetCommand {
                                                                 })
                                                         )
                                                         .executes((context) -> {
-                                                            return executeRotationScale((ServerCommandSource)
+                                                            return executeScale((ServerCommandSource)
                                                                             context.getSource(),
                                                                     ((ServerCommandSource)context.getSource()).getEntity(),
                                                                     ((ServerCommandSource)context.getSource()).getEntity().getYaw(),
@@ -128,7 +128,7 @@ public class GetCommand {
                                                         })
                                                 )
                                                 .executes((context) -> {
-                                                    return executeRotation((ServerCommandSource)
+                                                    return execute((ServerCommandSource)
                                                                     context.getSource(),
                                                             ((ServerCommandSource)context.getSource()).getEntity(),
                                                             ((ServerCommandSource)context.getSource()).getEntity().getYaw());
@@ -139,24 +139,24 @@ public class GetCommand {
                                                         .then(CommandManager
                                                                 .argument("target", EntityArgumentType.entity())
                                                                 .executes((context) -> {
-                                                                    return executeRotationScale((ServerCommandSource)
-                                                                                    context.getSource(),
+                                                                    return executeScale((ServerCommandSource)
+                                                                            context.getSource(),
                                                                             EntityArgumentType.getEntity(context, "target"),
                                                                             EntityArgumentType.getEntity(context, "target").getYaw(),
                                                                             DoubleArgumentType.getDouble(context, "scale"));
                                                                 })
                                                         )
                                                         .executes((context) -> {
-                                                            return executeRotationScale((ServerCommandSource)
-                                                                            context.getSource(),
+                                                            return executeScale((ServerCommandSource)
+                                                                    context.getSource(),
                                                                     ((ServerCommandSource)context.getSource()).getEntity(),
                                                                     ((ServerCommandSource)context.getSource()).getEntity().getPitch(),
                                                                     DoubleArgumentType.getDouble(context, "scale"));
                                                         })
                                                 )
                                                 .executes((context) -> {
-                                                    return executeRotation((ServerCommandSource)
-                                                                    context.getSource(),
+                                                    return execute((ServerCommandSource)
+                                                            context.getSource(),
                                                             ((ServerCommandSource)context.getSource()).getEntity(),
                                                             ((ServerCommandSource)context.getSource()).getEntity().getPitch());
                                                 })
@@ -166,35 +166,18 @@ public class GetCommand {
         );
     }
 
-    //좌표를 확인함.
-    private static int executePos(ServerCommandSource source, Entity entity, double pos) {
-        int i = (int) pos;
+    //실행시 값을 확인함.
+    private static int execute(ServerCommandSource source, Entity entity, double value) {
+        int i = (int) value;
         source.sendFeedback(() -> {
             return Text.translatable("commands.data.entity.query", entity.getDisplayName(), i);
         }, true);
         return i;
     }
-    //좌표를 확인함.+스케일이 있으면 곱셈
-    private static int executePosScale(ServerCommandSource source, Entity entity, double pos, double scale) {
-        pos = pos * scale;
-        int i = (int) pos;
-        source.sendFeedback(() -> {
-            return Text.translatable("commands.data.entity.query", entity.getDisplayName(), i);
-        }, true);
-        return i;
-    }
-    //위랑 같지만 좌표가 아닌 방향임.
-    private static int executeRotation(ServerCommandSource source, Entity entity, double rotation) {
-        int i = (int) rotation;
-        source.sendFeedback(() -> {
-            return Text.translatable("commands.data.entity.query", entity.getDisplayName(), i);
-        }, true);
-        return i;
-    }
-
-    private static int executeRotationScale(ServerCommandSource source, Entity entity, double rotation, double scale) {
-        rotation = rotation * scale;
-        int i = (int) rotation;
+    //값 확인 +스케일 곱셈
+    private static int executeScale(ServerCommandSource source, Entity entity, double value, double scale) {
+        value *= scale;
+        int i = (int) value;
         source.sendFeedback(() -> {
             return Text.translatable("commands.data.entity.query", entity.getDisplayName(), i);
         }, true);

@@ -8,8 +8,8 @@
 		"Sidite!"
 	],
 	"contact": {
-		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
+		"homepage": "https://github.com/Cidite",
+		"sources": "https://github.com/Cidite/sidite_datapack_utility_mod"
 	},
 	"accessWidener" : "sidite_utility.accesswidener",
 	"license": "MIT",
