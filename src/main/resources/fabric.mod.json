@@ -23,6 +23,10 @@
 		{
 			"config": "sidite_utility.mixins.json",
 			"environment": "client"
+		},
+		{
+			"config": "sidite_utility.server.mixins.json",
+			"environment": "server"
 		}
 	],
 	"depends": {
