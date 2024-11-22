@@ -18,41 +18,41 @@ import java.util.Locale;
 public class PosCommand {
     public static void register(CommandDispatcher<ServerCommandSource> dispatcher) {
         dispatcher.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)
-            CommandManager.literal("pos")
-            .requires(source -> source.hasPermissionLevel(2)))
-            .then(
-                ((RequiredArgumentBuilder)CommandManager
-                    .argument("target", EntityArgumentType.entity())
-                    .then(CommandManager
-                        .argument("pos", Vec3ArgumentType.vec3())
-                        .executes((context) -> {
-                            return execute((ServerCommandSource)
-                                context.getSource(),
-                                EntityArgumentType.getEntity(context, "target"),
-                                Vec3ArgumentType.getPosArgument(context, "pos"));
-                            }
+                CommandManager.literal("pos")
+                        .requires(source -> source.hasPermissionLevel(2)))
+                .then(
+                        ((RequiredArgumentBuilder)CommandManager
+                                .argument("target", EntityArgumentType.entity())
+                                .then(CommandManager
+                                        .argument("pos", Vec3ArgumentType.vec3())
+                                        .executes((context) -> {
+                                                    return execute((ServerCommandSource)
+                                                                    context.getSource(),
+                                                            EntityArgumentType.getEntity(context, "target"),
+                                                            Vec3ArgumentType.getPosArgument(context, "pos"));
+                                                }
+                                        )
+                                )
                         )
-                    )
                 )
-            )
-            .then(
-                ((RequiredArgumentBuilder)CommandManager
-                    .argument("pos",Vec3ArgumentType.vec3())
-                    .executes((context) -> {
-                        return execute((ServerCommandSource)
-                            context.getSource(),
-                            ((ServerCommandSource)context.getSource()).getEntity(),
-                            Vec3ArgumentType.getPosArgument(context, "pos"));
+                .then(
+                        ((RequiredArgumentBuilder)CommandManager
+                                .argument("pos",Vec3ArgumentType.vec3())
+                                .executes((context) -> {
+                                            return execute((ServerCommandSource)
+                                                            context.getSource(),
+                                                    ((ServerCommandSource)context.getSource()).getEntity(),
+                                                    Vec3ArgumentType.getPosArgument(context, "pos"));
+                                        }
+                                )
+                        )
+                )
+                .executes((context) -> {
+                            return executeDefault((ServerCommandSource)
+                                            context.getSource(),
+                                    ((ServerCommandSource)context.getSource()).getEntity());
                         }
-                    )
                 )
-            )
-            .executes((context) -> {
-                return executeDefault((ServerCommandSource)
-                    context.getSource(),
-                    ((ServerCommandSource)context.getSource()).getEntity());
-                }
-            )
         );
     }
 
@@ -87,16 +87,17 @@ public class PosCommand {
     private static String formatFloat(double d) {
         return String.format(Locale.ROOT, "%f", d);
     }
-
-//    private static int PosEntity(ServerCommandSource source, Entity destination, Collection<? extends Entity> targets) {
-//        lookTarget.look(source, entity);
+// /tp <대상을> <대상에게> 와 비슷한 코드.
+//
+//    private static int executeEntity(ServerCommandSource source, Entity entity, Entity destination) {
+//        Vec3d vec3d = destination.getPos();
 //        ServerPlayerEntity player = source.getPlayer();
 //        //플레이어일 경우 패킷 날리기
 //        if (player != null) {
 //            player.requestTeleport(vec3d.x, vec3d.y, vec3d.z);
 //        }
 //        source.sendFeedback(() -> {
-//            return Text.translatable("commands.pos.success.target", entity.getDisplayName());
+//            return Text.translatable("commands.pos.success.target", entity.getDisplayName(), destination.getDisplayName());
 //        }, true);
 //        return 1;
 //    }
