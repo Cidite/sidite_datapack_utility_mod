@@ -16,7 +16,7 @@ public class ChanceCommand {
                         .requires(source -> source.hasPermissionLevel(0)))
                 .then(
                         CommandManager.literal("value").then(CommandManager
-                                        .argument("chance", DoubleArgumentType.doubleArg())
+                                        .argument("chance", DoubleArgumentType.doubleArg(0, 1))
                                         .executes((context) -> {
                                             return execute((ServerCommandSource)
                                                     context.getSource(),
@@ -26,7 +26,7 @@ public class ChanceCommand {
                                 )
                 ).then(
                         CommandManager.literal("roll").then(CommandManager
-                                        .argument("chance", DoubleArgumentType.doubleArg())
+                                        .argument("chance", DoubleArgumentType.doubleArg(0, 1))
                                         .executes((context) -> {
                                             return execute((ServerCommandSource)
                                                     context.getSource(),
