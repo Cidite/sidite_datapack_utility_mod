@@ -13,6 +13,7 @@ public class siditeUtilityMain implements ModInitializer {
 
     @Override
 	public void onInitialize() {
+		LOGGER.info("Sidite Utility Initialize.");
 		CommandRegistrationCallback.EVENT.register((dispatcher, commandRegistryAccess, ignored1) -> {
 			PosCommand.register(dispatcher);
 			RotCommand.register(dispatcher);
