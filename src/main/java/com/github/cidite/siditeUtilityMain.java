@@ -20,6 +20,8 @@ public class siditeUtilityMain implements ModInitializer {
 			GetposCommand.register(dispatcher);
 			GetrotationCommand.register(dispatcher);
 			ChanceCommand.register(dispatcher);
+			GettickCommand.register(dispatcher);
+
 		});
 	}
 }
