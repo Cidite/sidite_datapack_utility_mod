@@ -77,20 +77,19 @@ public class GetrotationCommand {
 
     //실행시 값을 확인함.
     private static int execute(ServerCommandSource source, Entity entity, double value) {
-        int i = (int) value;
         source.sendFeedback(() -> {
-            return Text.translatable("commands.data.entity.query", entity.getDisplayName(), i);
+            return Text.translatable("commands.data.entity.query", entity.getDisplayName(), value);
         }, true);
-        return i;
+        return (int) value;
     }
     //값 확인 +스케일 곱셈
     private static int executeScale(ServerCommandSource source, Entity entity, double value, double scale) {
         value *= scale;
-        int i = (int) value;
+        double i = value;
         source.sendFeedback(() -> {
             return Text.translatable("commands.data.entity.query", entity.getDisplayName(), i);
         }, true);
-        return i;
+        return (int) i;
     }
 
 }
