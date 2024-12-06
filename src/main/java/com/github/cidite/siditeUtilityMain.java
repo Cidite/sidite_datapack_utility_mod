@@ -15,13 +15,12 @@ public class siditeUtilityMain implements ModInitializer {
 	public void onInitialize() {
 		LOGGER.info("Sidite Utility Initialize.");
 		CommandRegistrationCallback.EVENT.register((dispatcher, commandRegistryAccess, ignored1) -> {
-			PosCommand.register(dispatcher);
-			RotCommand.register(dispatcher);
+			ChanceCommand.register(dispatcher);
 			GetposCommand.register(dispatcher);
 			GetrotationCommand.register(dispatcher);
-			ChanceCommand.register(dispatcher);
 			GettickCommand.register(dispatcher);
-
+			PosCommand.register(dispatcher);
+			RotCommand.register(dispatcher);
 		});
 	}
 }
