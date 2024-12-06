@@ -103,7 +103,7 @@ public class GettickCommand {
         long mspt = source.getServer().getAverageNanosPerTick();
         float target_tps = serverTickManager.getTickRate();
 
-        //만약 tps 저하가 일어난다면
+        //만약 tps 저하가 일어난다면...
         if (serverTickManager.getNanosPerTick() < mspt) {
             target_tps = (float) TimeUnit.SECONDS.toNanos(1L) / mspt;
         }
