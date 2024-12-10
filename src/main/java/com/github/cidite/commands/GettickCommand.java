@@ -89,12 +89,13 @@ public class GettickCommand {
 
     private static int executeTargetTPS(ServerCommandSource source, float value) {
         //목표 tps 표시.
+        //근데 이건 /tick query로 불러올수 있어서 쓰지 않는게 좋음.
         ServerTickManager serverTickManager = source.getServer().getTickManager();
-        float f = serverTickManager.getTickRate() * value;
+        float f = serverTickManager.getTickRate();
         source.sendFeedback(() -> {
-            return Text.literal("target tps: " + (f/value));
+            return Text.literal("target tps: " + (f));
         }, true);
-        return (int) f;
+        return (int) (f * value);
     }
 
     private static int executeTPS(ServerCommandSource source, float value) {
@@ -105,7 +106,7 @@ public class GettickCommand {
 
         //만약 tps 저하가 일어난다면...
         if (serverTickManager.getNanosPerTick() < mspt) {
-            target_tps = (float) TimeUnit.SECONDS.toNanos(1L) / mspt;
+            target_tps = (float) 1000000000 / mspt;
         }
 
         float finalTarget_tps = target_tps;
@@ -117,11 +118,11 @@ public class GettickCommand {
 
     private static int executeMspt(ServerCommandSource source, float value) {
         //현재 mspt 표시. 1틱을 연산하는데 걸리는 시간(ms)
-        float mspt = (value / 1000000) * source.getServer().getAverageNanosPerTick();
+        float mspt = 1000000 * source.getServer().getAverageNanosPerTick();
         source.sendFeedback(() -> {
-            return Text.literal("mspt: " + (mspt/value));
+            return Text.literal("mspt: " + (mspt));
         }, true);
-        return (int) mspt;
+        return (int) (mspt * value);
     }
 
     private static int executeNspt(ServerCommandSource source, float value) {
