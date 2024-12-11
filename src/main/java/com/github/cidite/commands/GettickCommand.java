@@ -118,7 +118,7 @@ public class GettickCommand {
 
     private static int executeMspt(ServerCommandSource source, float value) {
         //현재 mspt 표시. 1틱을 연산하는데 걸리는 시간(ms)
-        float mspt = 1000000 * source.getServer().getAverageNanosPerTick();
+        float mspt = (float) source.getServer().getAverageNanosPerTick() / 1000000 ;
         source.sendFeedback(() -> {
             return Text.literal("mspt: " + (mspt));
         }, true);
