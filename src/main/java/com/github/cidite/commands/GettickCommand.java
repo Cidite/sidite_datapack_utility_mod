@@ -8,8 +8,6 @@ import net.minecraft.server.command.CommandManager;
 import net.minecraft.server.command.ServerCommandSource;
 import net.minecraft.text.Text;
 
-import java.util.concurrent.TimeUnit;
-
 public class GettickCommand {
     public static void register(CommandDispatcher<ServerCommandSource> dispatcher) {
         dispatcher.register((LiteralArgumentBuilder) ((LiteralArgumentBuilder)
@@ -87,7 +85,7 @@ public class GettickCommand {
         );
     }
 
-    private static int executeTargetTPS(ServerCommandSource source, float value) {
+    private static int executeTargetTPS(ServerCommandSource source, float scale) {
         //목표 tps 표시.
         //근데 이건 /tick query로 불러올수 있어서 쓰지 않는게 좋음.
         ServerTickManager serverTickManager = source.getServer().getTickManager();
@@ -95,10 +93,10 @@ public class GettickCommand {
         source.sendFeedback(() -> {
             return Text.literal("target tps: " + (f));
         }, true);
-        return (int) (f * value);
+        return (int) (f * scale);
     }
 
-    private static int executeTPS(ServerCommandSource source, float value) {
+    private static int executeTPS(ServerCommandSource source, float scale) {
         //현재 tps 표시.
         ServerTickManager serverTickManager = source.getServer().getTickManager();
         long mspt = source.getServer().getAverageNanosPerTick();
@@ -113,24 +111,24 @@ public class GettickCommand {
         source.sendFeedback(() -> {
             return Text.literal("tps: " + (finalTarget_tps));
         }, true);
-        return (int) (target_tps * value);
+        return (int) (target_tps * scale);
     }
 
-    private static int executeMspt(ServerCommandSource source, float value) {
+    private static int executeMspt(ServerCommandSource source, float scale) {
         //현재 mspt 표시. 1틱을 연산하는데 걸리는 시간(ms)
         float mspt = (float) source.getServer().getAverageNanosPerTick() / 1000000 ;
         source.sendFeedback(() -> {
             return Text.literal("mspt: " + (mspt));
         }, true);
-        return (int) (mspt * value);
+        return (int) (mspt * scale);
     }
 
-    private static int executeNspt(ServerCommandSource source, float value) {
+    private static int executeNspt(ServerCommandSource source, float scale) {
         //현재 nspt 표시. 나노초!
         long nspt = source.getServer().getAverageNanosPerTick();
         source.sendFeedback(() -> {
             return Text.literal("nspt: " + (nspt));
         }, true);
-        return (int) (nspt * value);
+        return (int) (nspt * scale);
     }
 }
