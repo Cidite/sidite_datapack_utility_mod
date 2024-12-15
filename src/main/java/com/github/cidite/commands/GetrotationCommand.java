@@ -23,7 +23,7 @@ public class GetrotationCommand {
                                         .then(CommandManager
                                                 .argument("target", EntityArgumentType.entity())
                                                 .executes((context) -> {
-                                                    return executeScale((ServerCommandSource)
+                                                    return executeScale(
                                                                     context.getSource(),
                                                             EntityArgumentType.getEntity(context, "target"),
                                                             EntityArgumentType.getEntity(context, "target").getYaw(),
@@ -31,18 +31,18 @@ public class GetrotationCommand {
                                                 })
                                         )
                                         .executes((context) -> {
-                                            return executeScale((ServerCommandSource)
+                                            return executeScale(
                                                             context.getSource(),
-                                                    ((ServerCommandSource)context.getSource()).getEntity(),
-                                                    ((ServerCommandSource)context.getSource()).getEntity().getYaw(),
+                                                    (context.getSource()).getEntity(),
+                                                    (context.getSource()).getEntity().getYaw(),
                                                     DoubleArgumentType.getDouble(context, "scale"));
                                         })
                                 )
                                 .executes((context) -> {
-                                    return execute((ServerCommandSource)
+                                    return execute(
                                                     context.getSource(),
-                                            ((ServerCommandSource)context.getSource()).getEntity(),
-                                            ((ServerCommandSource)context.getSource()).getEntity().getYaw());
+                                            (context.getSource()).getEntity(),
+                                            (context.getSource()).getEntity().getYaw());
                                 })
                 ).then(
                         CommandManager.literal("y").then(CommandManager
@@ -50,7 +50,7 @@ public class GetrotationCommand {
                                         .then(CommandManager
                                                 .argument("target", EntityArgumentType.entity())
                                                 .executes((context) -> {
-                                                    return executeScale((ServerCommandSource)
+                                                    return executeScale(
                                                                     context.getSource(),
                                                             EntityArgumentType.getEntity(context, "target"),
                                                             EntityArgumentType.getEntity(context, "target").getYaw(),
@@ -58,18 +58,18 @@ public class GetrotationCommand {
                                                 })
                                         )
                                         .executes((context) -> {
-                                            return executeScale((ServerCommandSource)
+                                            return executeScale(
                                                             context.getSource(),
-                                                    ((ServerCommandSource)context.getSource()).getEntity(),
-                                                    ((ServerCommandSource)context.getSource()).getEntity().getPitch(),
+                                                    (context.getSource()).getEntity(),
+                                                    (context.getSource()).getEntity().getPitch(),
                                                     DoubleArgumentType.getDouble(context, "scale"));
                                         })
                                 )
                                 .executes((context) -> {
-                                    return execute((ServerCommandSource)
+                                    return execute(
                                                     context.getSource(),
-                                            ((ServerCommandSource)context.getSource()).getEntity(),
-                                            ((ServerCommandSource)context.getSource()).getEntity().getPitch());
+                                            (context.getSource()).getEntity(),
+                                            (context.getSource()).getEntity().getPitch());
                                 })
                 )
         );

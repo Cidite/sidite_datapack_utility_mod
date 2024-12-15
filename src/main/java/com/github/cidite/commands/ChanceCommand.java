@@ -18,7 +18,7 @@ public class ChanceCommand {
                         CommandManager.literal("value").then(CommandManager
                                         .argument("chance", DoubleArgumentType.doubleArg(0, 1))
                                         .executes((context) -> {
-                                            return execute((ServerCommandSource)
+                                            return execute(
                                                     context.getSource(),
                                                     DoubleArgumentType.getDouble(context, "chance"),
                                                     false);
@@ -28,7 +28,7 @@ public class ChanceCommand {
                         CommandManager.literal("roll").then(CommandManager
                                         .argument("chance", DoubleArgumentType.doubleArg(0, 1))
                                         .executes((context) -> {
-                                            return execute((ServerCommandSource)
+                                            return execute(
                                                     context.getSource(),
                                                     DoubleArgumentType.getDouble(context, "chance"),
                                                     true);

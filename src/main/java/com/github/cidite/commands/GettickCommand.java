@@ -18,14 +18,14 @@ public class GettickCommand {
                                 .then(CommandManager
                                         .argument("scale", FloatArgumentType.floatArg())
                                         .executes((context) -> {
-                                            return executeTargetTPS((ServerCommandSource)
+                                            return executeTargetTPS(
                                                     context.getSource(),
                                                     FloatArgumentType.getFloat(context, "scale")
                                             );
                                         })
                                 )
                                 .executes((context) -> {
-                                    return executeTargetTPS((ServerCommandSource)
+                                    return executeTargetTPS(
                                                     context.getSource(),
                                             1.0f
                                     );
@@ -35,14 +35,14 @@ public class GettickCommand {
                                 .then(CommandManager
                                         .argument("scale", FloatArgumentType.floatArg())
                                         .executes((context) -> {
-                                            return executeTPS((ServerCommandSource)
+                                            return executeTPS(
                                                             context.getSource(),
                                                     FloatArgumentType.getFloat(context, "scale")
                                             );
                                         })
                                 )
                                 .executes((context) -> {
-                                    return executeTPS((ServerCommandSource)
+                                    return executeTPS(
                                                     context.getSource(),
                                             1.0f
                                     );
@@ -52,14 +52,14 @@ public class GettickCommand {
                                 .then(CommandManager
                                         .argument("scale", FloatArgumentType.floatArg())
                                         .executes((context) -> {
-                                            return executeMspt((ServerCommandSource)
+                                            return executeMspt(
                                                             context.getSource(),
                                                     FloatArgumentType.getFloat(context, "scale")
                                             );
                                         })
                                 )
                                 .executes((context) -> {
-                                    return executeMspt((ServerCommandSource)
+                                    return executeMspt(
                                                     context.getSource(),
                                             1.0f
                                     );
@@ -69,14 +69,14 @@ public class GettickCommand {
                                 .then(CommandManager
                                         .argument("scale", FloatArgumentType.floatArg())
                                         .executes((context) -> {
-                                            return executeNspt((ServerCommandSource)
+                                            return executeNspt(
                                                             context.getSource(),
                                                     FloatArgumentType.getFloat(context, "scale")
                                             );
                                         })
                                 )
                                 .executes((context) -> {
-                                    return executeNspt((ServerCommandSource)
+                                    return executeNspt(
                                                     context.getSource(),
                                             1.0f
                                     );

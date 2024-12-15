@@ -20,12 +20,12 @@ public class RotCommand {
             CommandManager.literal("rot")
             .requires(source -> source.hasPermissionLevel(2)))
         .then(
-            ((RequiredArgumentBuilder)CommandManager
+            (CommandManager
                 .argument("target", EntityArgumentType.entity())
                 .then(CommandManager
                     .argument("rotation", RotationArgumentType.rotation())
                     .executes((context) -> {
-                        return execute((ServerCommandSource)
+                        return execute(
                             context.getSource(),
                             EntityArgumentType.getEntity(context, "target"),
                             RotationArgumentType.getRotation(context,"rotation"));
@@ -35,12 +35,12 @@ public class RotCommand {
             )
         )
         .then(
-            ((RequiredArgumentBuilder)CommandManager
+            (CommandManager
                 .argument("rotation", RotationArgumentType.rotation())
                 .executes((context) -> {
-                    return execute((ServerCommandSource)
+                    return execute(
                         context.getSource(),
-                        ((ServerCommandSource)context.getSource()).getEntity(),
+                        (context.getSource()).getEntity(),
                         RotationArgumentType.getRotation(context, "rotation"));
                     }
                 )

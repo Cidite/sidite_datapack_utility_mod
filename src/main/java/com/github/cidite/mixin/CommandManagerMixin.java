@@ -1,7 +1,12 @@
 package com.github.cidite.mixin;
 
 
-import com.github.cidite.commands.*;
+import com.github.cidite.commands.ChanceCommand;
+import com.github.cidite.commands.GetposCommand;
+import com.github.cidite.commands.GetrotationCommand;
+import com.github.cidite.commands.GettickCommand;
+import com.github.cidite.commands.PosCommand;
+import com.github.cidite.commands.RotCommand;
 import com.mojang.brigadier.CommandDispatcher;
 import net.minecraft.command.CommandRegistryAccess;
 import net.minecraft.server.command.CommandManager;
@@ -27,6 +32,6 @@ public class CommandManagerMixin {
 			GettickCommand.register(this.dispatcher);
 			PosCommand.register(this.dispatcher);
 			RotCommand.register(this.dispatcher);
-    }
+	}
 
 }

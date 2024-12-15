@@ -23,7 +23,7 @@ public class GetposCommand {
                                         .then(CommandManager
                                                 .argument("target", EntityArgumentType.entity())
                                                 .executes((context) -> {
-                                                    return executeScale((ServerCommandSource)
+                                                    return executeScale(
                                                                     context.getSource(),
                                                             EntityArgumentType.getEntity(context, "target"),
                                                             EntityArgumentType.getEntity(context, "target").getX(),
@@ -31,18 +31,18 @@ public class GetposCommand {
                                                 })
                                         )
                                         .executes((context) -> {
-                                            return executeScale((ServerCommandSource)
+                                            return executeScale(
                                                             context.getSource(),
-                                                    ((ServerCommandSource)context.getSource()).getEntity(),
-                                                    ((ServerCommandSource)context.getSource()).getEntity().getX(),
+                                                    (context.getSource()).getEntity(),
+                                                    (context.getSource()).getEntity().getX(),
                                                     DoubleArgumentType.getDouble(context, "scale"));
                                         })
                                 )
                                 .executes((context) -> {
-                                    return execute((ServerCommandSource)
+                                    return execute(
                                                     context.getSource(),
-                                            ((ServerCommandSource)context.getSource()).getEntity(),
-                                            ((ServerCommandSource)context.getSource()).getEntity().getX());
+                                            (context.getSource()).getEntity(),
+                                            (context.getSource()).getEntity().getX());
                                 })
                 ).then(
                         CommandManager.literal("y").then(CommandManager
@@ -50,7 +50,7 @@ public class GetposCommand {
                                         .then(CommandManager
                                                 .argument("target", EntityArgumentType.entity())
                                                 .executes((context) -> {
-                                                    return executeScale((ServerCommandSource)
+                                                    return executeScale(
                                                                     context.getSource(),
                                                             EntityArgumentType.getEntity(context, "target"),
                                                             EntityArgumentType.getEntity(context, "target").getY(),
@@ -58,18 +58,18 @@ public class GetposCommand {
                                                 })
                                         )
                                         .executes((context) -> {
-                                            return executeScale((ServerCommandSource)
+                                            return executeScale(
                                                             context.getSource(),
-                                                    ((ServerCommandSource)context.getSource()).getEntity(),
-                                                    ((ServerCommandSource)context.getSource()).getEntity().getY(),
+                                                    (context.getSource()).getEntity(),
+                                                    (context.getSource()).getEntity().getY(),
                                                     DoubleArgumentType.getDouble(context, "scale"));
                                         })
                                 )
                                 .executes((context) -> {
-                                    return execute((ServerCommandSource)
+                                    return execute(
                                                     context.getSource(),
-                                            ((ServerCommandSource)context.getSource()).getEntity(),
-                                            ((ServerCommandSource)context.getSource()).getEntity().getY());
+                                            (context.getSource()).getEntity(),
+                                            (context.getSource()).getEntity().getY());
                                 })
                 ).then(
                         CommandManager.literal("z").then(CommandManager
@@ -77,7 +77,7 @@ public class GetposCommand {
                                         .then(CommandManager
                                                 .argument("target", EntityArgumentType.entity())
                                                 .executes((context) -> {
-                                                    return executeScale((ServerCommandSource)
+                                                    return executeScale(
                                                                     context.getSource(),
                                                             EntityArgumentType.getEntity(context, "target"),
                                                             EntityArgumentType.getEntity(context, "target").getZ(),
@@ -85,18 +85,18 @@ public class GetposCommand {
                                                 })
                                         )
                                         .executes((context) -> {
-                                            return executeScale((ServerCommandSource)
+                                            return executeScale(
                                                             context.getSource(),
-                                                    ((ServerCommandSource)context.getSource()).getEntity(),
-                                                    ((ServerCommandSource)context.getSource()).getEntity().getZ(),
+                                                    (context.getSource()).getEntity(),
+                                                    (context.getSource()).getEntity().getZ(),
                                                     DoubleArgumentType.getDouble(context, "scale"));
                                         })
                                 )
                                 .executes((context) -> {
-                                    return execute((ServerCommandSource)
+                                    return execute(
                                                     context.getSource(),
-                                            ((ServerCommandSource)context.getSource()).getEntity(),
-                                            ((ServerCommandSource)context.getSource()).getEntity().getZ());
+                                            (context.getSource()).getEntity(),
+                                            (context.getSource()).getEntity().getZ());
                                 })
                 )
         );

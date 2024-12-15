@@ -26,7 +26,7 @@ public class PosCommand {
                                 .then(CommandManager
                                         .argument("pos", Vec3ArgumentType.vec3())
                                         .executes((context) -> {
-                                                    return execute((ServerCommandSource)
+                                                    return execute(
                                                                     context.getSource(),
                                                             EntityArgumentType.getEntity(context, "target"),
                                                             Vec3ArgumentType.getPosArgument(context, "pos"));
@@ -39,9 +39,9 @@ public class PosCommand {
                         ((RequiredArgumentBuilder)CommandManager
                                 .argument("pos",Vec3ArgumentType.vec3())
                                 .executes((context) -> {
-                                            return execute((ServerCommandSource)
+                                            return execute(
                                                             context.getSource(),
-                                                    ((ServerCommandSource)context.getSource()).getEntity(),
+                                                    (context.getSource()).getEntity(),
                                                     Vec3ArgumentType.getPosArgument(context, "pos"));
                                         }
                                 )
