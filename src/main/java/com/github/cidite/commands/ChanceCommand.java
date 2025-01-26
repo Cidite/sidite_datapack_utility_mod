@@ -6,7 +6,6 @@ import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import net.minecraft.server.command.CommandManager;
 import net.minecraft.server.command.ServerCommandSource;
 import net.minecraft.text.Text;
-import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.random.Random;
 
 public class ChanceCommand {
@@ -39,21 +38,17 @@ public class ChanceCommand {
     }
 
     private static int execute(ServerCommandSource source, Double chance, boolean roll) {
-        int i;
-        Random random;
-        random = source.getWorld().getRandom();
-        double d = MathHelper.nextDouble(random, 0, 1);
-
-        if (d <= chance) i = 1;
-        else i = 0;
+        Random random = source.getWorld().getRandom();
+        double randomValue = random.nextDouble();
+        int result = (randomValue <= chance) ? 1 : 0;
 
         if (roll) {
-            source.getServer().getPlayerManager().broadcast(Text.translatable("commands.random.roll", source.getDisplayName(), i, chance, chance), false);
+            source.getServer().getPlayerManager().broadcast(Text.translatable("commands.random.roll", source.getDisplayName(), result, chance, chance), false);
         } else {
             source.sendFeedback(() -> {
-                return Text.translatable("commands.random.sample.success", i);
+                return Text.translatable("commands.random.sample.success", result);
             }, false);
         }
-        return i;
+        return result;
     }
 }
