@@ -17,41 +17,41 @@ import java.util.Locale;
 public class RotCommand {
     public static void register(CommandDispatcher<ServerCommandSource> dispatcher) {
         dispatcher.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)
-            CommandManager.literal("rot")
-            .requires(source -> source.hasPermissionLevel(2)))
-        .then(
-            (CommandManager
-                .argument("target", EntityArgumentType.entity())
-                .then(CommandManager
-                    .argument("rotation", RotationArgumentType.rotation())
-                    .executes((context) -> {
-                        return execute(
-                            context.getSource(),
-                            EntityArgumentType.getEntity(context, "target"),
-                            RotationArgumentType.getRotation(context,"rotation"));
-                        }
-                    )
+                CommandManager.literal("rot")
+                        .requires(source -> source.hasPermissionLevel(2)))
+                .then(
+                        (CommandManager
+                                .argument("target", EntityArgumentType.entity())
+                                .then(CommandManager
+                                        .argument("rotation", RotationArgumentType.rotation())
+                                        .executes((context) -> {
+                                                    return execute(
+                                                            context.getSource(),
+                                                            EntityArgumentType.getEntity(context, "target"),
+                                                            RotationArgumentType.getRotation(context,"rotation"));
+                                                }
+                                        )
+                                )
+                        )
                 )
-            )
-        )
-        .then(
-            (CommandManager
-                .argument("rotation", RotationArgumentType.rotation())
+                .then(
+                        (CommandManager
+                                .argument("rotation", RotationArgumentType.rotation())
+                                .executes((context) -> {
+                                            return execute(
+                                                    context.getSource(),
+                                                    (context.getSource()).getEntity(),
+                                                    RotationArgumentType.getRotation(context, "rotation"));
+                                        }
+                                )
+                        )
+                )
                 .executes((context) -> {
-                    return execute(
-                        context.getSource(),
-                        (context.getSource()).getEntity(),
-                        RotationArgumentType.getRotation(context, "rotation"));
-                    }
+                            return executeDefault((ServerCommandSource)
+                                            context.getSource(),
+                                    ((ServerCommandSource)context.getSource()).getEntity());
+                        }
                 )
-            )
-        )
-        .executes((context) -> {
-            return executeDefault((ServerCommandSource)
-                context.getSource(),
-                ((ServerCommandSource)context.getSource()).getEntity());
-                }
-            )
         );
     }
 
@@ -73,7 +73,4 @@ public class RotCommand {
         return 1;
     }
 
-    private static String formatFloat(double d) {
-        return String.format(Locale.ROOT, "%f", d);
-    }
 }
