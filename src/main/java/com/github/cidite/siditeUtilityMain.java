@@ -1,6 +1,6 @@
 package com.github.cidite;
 
-import com.github.cidite.commands.*;
+//import com.github.cidite.commands.*;
 
 import net.fabricmc.api.ModInitializer;
 //import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
