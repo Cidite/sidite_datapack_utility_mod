@@ -1,73 +1,58 @@
 package com.github.cidite.commands;
 
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import net.minecraft.command.argument.EntityArgumentType;
 import net.minecraft.command.argument.PosArgument;
 import net.minecraft.command.argument.Vec3ArgumentType;
 import net.minecraft.entity.Entity;
 import net.minecraft.server.command.CommandManager;
 import net.minecraft.server.command.ServerCommandSource;
+import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.text.Text;
 import net.minecraft.util.math.Vec3d;
-import net.minecraft.server.network.ServerPlayerEntity;
 
 import java.util.Locale;
 
 public class PosCommand {
     public static void register(CommandDispatcher<ServerCommandSource> dispatcher) {
-        dispatcher.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)
+        dispatcher.register(
                 CommandManager.literal("pos")
-                        .requires(source -> source.hasPermissionLevel(2)))
-                .then(
-                        ((RequiredArgumentBuilder)CommandManager
+                        .requires(source -> source.hasPermissionLevel(2))
+                        .then(CommandManager
                                 .argument("target", EntityArgumentType.entity())
                                 .then(CommandManager
                                         .argument("pos", Vec3ArgumentType.vec3())
-                                        .executes((context) -> {
-                                                    return execute(
-                                                                    context.getSource(),
-                                                            EntityArgumentType.getEntity(context, "target"),
-                                                            Vec3ArgumentType.getPosArgument(context, "pos"));
-                                                }
+                                        .executes(context -> execute(
+                                                context.getSource(),
+                                                EntityArgumentType.getEntity(context, "target"),
+                                                Vec3ArgumentType.getPosArgument(context, "pos"))
                                         )
                                 )
                         )
-                )
-                .then(
-                        ((RequiredArgumentBuilder)CommandManager
+                        .then(CommandManager
                                 .argument("pos",Vec3ArgumentType.vec3())
-                                .executes((context) -> {
-                                            return execute(
-                                                            context.getSource(),
-                                                    (context.getSource()).getEntity(),
-                                                    Vec3ArgumentType.getPosArgument(context, "pos"));
-                                        }
+                                .executes(context -> execute(
+                                        context.getSource(),
+                                        (context.getSource()).getEntity(),
+                                        Vec3ArgumentType.getPosArgument(context, "pos"))
                                 )
                         )
-                )
-                .executes((context) -> {
-                            return executeDefault((ServerCommandSource)
-                                            context.getSource(),
-                                    ((ServerCommandSource)context.getSource()).getEntity());
-                        }
-                )
+                        .executes(context -> executeDefault(
+                                context.getSource(),
+                                (context.getSource()).getEntity())
+                        )
         );
     }
 
     private static int execute(ServerCommandSource source, Entity entity, PosArgument location) {
         Vec3d vec3d = location.getPos(source);
         ServerPlayerEntity player = source.getPlayer();
-        //entity.setPos(vec3d.x, vec3d.y, vec3d.z);
         entity.updatePosition(vec3d.x, vec3d.y, vec3d.z);
         //실행자가 플레이어일 경우 tp 패킷 날리기. 디싱크 방지.
         if (player != null) {
             player.requestTeleport(vec3d.x, vec3d.y, vec3d.z);
         }
-        source.sendFeedback(() -> {
-            return Text.translatable("commands.pos.success", entity.getDisplayName(), formatFloat(vec3d.x), formatFloat(vec3d.y), formatFloat(vec3d.z));
-        }, true);
+        source.sendFeedback(() -> Text.translatable("commands.pos.success", entity.getDisplayName(), formatFloat(vec3d.x), formatFloat(vec3d.y), formatFloat(vec3d.z)), true);
         return 1;
     }
 
@@ -78,9 +63,7 @@ public class PosCommand {
         if (player != null) {
             player.requestTeleport(vec3d.x, vec3d.y, vec3d.z);
         }
-        source.sendFeedback(() -> {
-            return Text.translatable("commands.pos.success", entity.getDisplayName(), formatFloat(vec3d.x), formatFloat(vec3d.y), formatFloat(vec3d.z));
-        }, true);
+        source.sendFeedback(() -> Text.translatable("commands.pos.success", entity.getDisplayName(), formatFloat(vec3d.x), formatFloat(vec3d.y), formatFloat(vec3d.z)), true);
         return 1;
     }
 
