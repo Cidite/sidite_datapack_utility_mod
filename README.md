@@ -33,5 +33,10 @@ Default: [scale] = 1, [target] = "@s"
 
 Default: [scale] = 1
 
+###	/truekill
+개체를 즉시 제거합니다.
+
+Default: [scale] = 1
+
 ## Note(참고)
 1.0.3 이하 버전은 [Fabric API](https://modrinth.com/mod/fabric-api) 모드가 필요합니다.
