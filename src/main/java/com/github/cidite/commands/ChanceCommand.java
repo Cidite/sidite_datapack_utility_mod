@@ -1,38 +1,35 @@
 package com.github.cidite.commands;
 
 import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.BoolArgumentType;
 import com.mojang.brigadier.arguments.DoubleArgumentType;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import net.minecraft.server.command.CommandManager;
 import net.minecraft.server.command.ServerCommandSource;
 import net.minecraft.text.Text;
 import net.minecraft.util.math.random.Random;
 
+// /chance <chance> [roll]
+// 확률 테스트 명령어 1 = 100%, 0.5 = 50%
 public class ChanceCommand {
     public static void register(CommandDispatcher<ServerCommandSource> dispatcher) {
-        dispatcher.register((LiteralArgumentBuilder) ((LiteralArgumentBuilder)
+        dispatcher.register(
                 CommandManager.literal("chance")
-                        .requires(source -> source.hasPermissionLevel(0)))
-                .then(
-                        CommandManager.literal("value").then(CommandManager
-                                        .argument("chance", DoubleArgumentType.doubleArg(0, 1))
-                                        .executes((context) -> {
-                                            return execute(
-                                                    context.getSource(),
-                                                    DoubleArgumentType.getDouble(context, "chance"),
-                                                    false);
-                                        })
+                        .requires(source -> source.hasPermissionLevel(0))
+                .then(CommandManager
+                        .argument("chance", DoubleArgumentType.doubleArg(0, 1))
+                        .then(CommandManager
+                                .argument("roll", BoolArgumentType.bool())
+                                .executes(context -> execute(
+                                        context.getSource(),
+                                        DoubleArgumentType.getDouble(context, "chance"),
+                                        BoolArgumentType.getBool(context, "roll"))
                                 )
-                ).then(
-                        CommandManager.literal("roll").then(CommandManager
-                                        .argument("chance", DoubleArgumentType.doubleArg(0, 1))
-                                        .executes((context) -> {
-                                            return execute(
-                                                    context.getSource(),
-                                                    DoubleArgumentType.getDouble(context, "chance"),
-                                                    true);
-                                        })
-                                )
+                        )
+                        .executes(context -> execute(
+                                context.getSource(),
+                                DoubleArgumentType.getDouble(context, "chance"),
+                                false)
+                        )
                 )
         );
     }
@@ -45,9 +42,7 @@ public class ChanceCommand {
         if (roll) {
             source.getServer().getPlayerManager().broadcast(Text.translatable("commands.random.roll", source.getDisplayName(), result, chance, chance), false);
         } else {
-            source.sendFeedback(() -> {
-                return Text.translatable("commands.random.sample.success", result);
-            }, false);
+            source.sendFeedback(() -> Text.translatable("commands.random.sample.success", result), false);
         }
         return result;
     }
