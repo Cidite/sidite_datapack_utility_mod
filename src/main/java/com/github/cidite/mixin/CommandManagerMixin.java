@@ -1,12 +1,7 @@
 package com.github.cidite.mixin;
 
 
-import com.github.cidite.commands.ChanceCommand;
-import com.github.cidite.commands.GetposCommand;
-import com.github.cidite.commands.GetrotationCommand;
-import com.github.cidite.commands.GettickCommand;
-import com.github.cidite.commands.PosCommand;
-import com.github.cidite.commands.RotCommand;
+import com.github.cidite.commands.*;
 import com.mojang.brigadier.CommandDispatcher;
 import net.minecraft.command.CommandRegistryAccess;
 import net.minecraft.server.command.CommandManager;
@@ -26,12 +21,13 @@ public class CommandManagerMixin {
 
     @Inject(at = @At(value = "INVOKE", target = "Lcom/mojang/brigadier/CommandDispatcher;setConsumer(Lcom/mojang/brigadier/ResultConsumer;)V"), method = "<init>")
     private void init(CommandManager.RegistrationEnvironment environment, CommandRegistryAccess commandRegistryAccess, CallbackInfo info) {
-			ChanceCommand.register(this.dispatcher);
-			GetposCommand.register(this.dispatcher);
-			GetrotationCommand.register(this.dispatcher);
-			GettickCommand.register(this.dispatcher);
-			PosCommand.register(this.dispatcher);
-			RotCommand.register(this.dispatcher);
+		ChanceCommand.register(this.dispatcher);
+		GetposCommand.register(this.dispatcher);
+		GetrotationCommand.register(this.dispatcher);
+		GettickCommand.register(this.dispatcher);
+		PosCommand.register(this.dispatcher);
+		RotCommand.register(this.dispatcher);
+		TruekillCommand.register(this.dispatcher);
 	}
 
 }
