@@ -14,63 +14,58 @@ import net.minecraft.text.Text;
 
 public class GetrotationCommand {
     public static void register(CommandDispatcher<ServerCommandSource> dispatcher) {
-        dispatcher.register((LiteralArgumentBuilder) ((LiteralArgumentBuilder)
+        dispatcher.register(
                 CommandManager.literal("get_rotation")
-                        .requires(source -> source.hasPermissionLevel(2)))
-                .then(
-                        CommandManager.literal("x").then(CommandManager
-                                        .argument("scale", DoubleArgumentType.doubleArg())
-                                        .then(CommandManager
-                                                .argument("target", EntityArgumentType.entity())
-                                                .executes((context) -> {
-                                                    return executeScale(
-                                                                    context.getSource(),
-                                                            EntityArgumentType.getEntity(context, "target"),
-                                                            EntityArgumentType.getEntity(context, "target").getYaw(),
-                                                            DoubleArgumentType.getDouble(context, "scale"));
-                                                })
+                        .requires(source -> source.hasPermissionLevel(2))
+                .then(CommandManager.literal("x")
+                        .then(CommandManager
+                                .argument("scale", DoubleArgumentType.doubleArg())
+                                .then(CommandManager
+                                        .argument("target", EntityArgumentType.entity())
+                                        .executes(context -> executeScale(
+                                                context.getSource(),
+                                                EntityArgumentType.getEntity(context, "target"),
+                                                EntityArgumentType.getEntity(context, "target").getYaw(),
+                                                DoubleArgumentType.getDouble(context, "scale"))
                                         )
-                                        .executes((context) -> {
-                                            return executeScale(
-                                                            context.getSource(),
-                                                    (context.getSource()).getEntity(),
-                                                    (context.getSource()).getEntity().getYaw(),
-                                                    DoubleArgumentType.getDouble(context, "scale"));
-                                        })
                                 )
-                                .executes((context) -> {
-                                    return execute(
-                                                    context.getSource(),
-                                            (context.getSource()).getEntity(),
-                                            (context.getSource()).getEntity().getYaw());
-                                })
-                ).then(
-                        CommandManager.literal("y").then(CommandManager
-                                        .argument("scale", DoubleArgumentType.doubleArg())
-                                        .then(CommandManager
-                                                .argument("target", EntityArgumentType.entity())
-                                                .executes((context) -> {
-                                                    return executeScale(
-                                                                    context.getSource(),
-                                                            EntityArgumentType.getEntity(context, "target"),
-                                                            EntityArgumentType.getEntity(context, "target").getYaw(),
-                                                            DoubleArgumentType.getDouble(context, "scale"));
-                                                })
+                                .executes(context -> executeScale(
+                                        context.getSource(),
+                                        (context.getSource()).getEntity(),
+                                        (context.getSource()).getEntity().getYaw(),
+                                        DoubleArgumentType.getDouble(context, "scale"))
+                                )
+                        )
+                        .executes(context -> execute(
+                                context.getSource(),
+                                (context.getSource()).getEntity(),
+                                (context.getSource()).getEntity().getYaw())
+                        )
+                )
+                .then(CommandManager.literal("y")
+                        .then(CommandManager
+                                .argument("scale", DoubleArgumentType.doubleArg())
+                                .then(CommandManager
+                                        .argument("target", EntityArgumentType.entity())
+                                        .executes(context -> executeScale(
+                                                context.getSource(),
+                                                EntityArgumentType.getEntity(context, "target"),
+                                                EntityArgumentType.getEntity(context, "target").getYaw(),
+                                                DoubleArgumentType.getDouble(context, "scale"))
                                         )
-                                        .executes((context) -> {
-                                            return executeScale(
-                                                            context.getSource(),
-                                                    (context.getSource()).getEntity(),
-                                                    (context.getSource()).getEntity().getPitch(),
-                                                    DoubleArgumentType.getDouble(context, "scale"));
-                                        })
                                 )
-                                .executes((context) -> {
-                                    return execute(
-                                                    context.getSource(),
-                                            (context.getSource()).getEntity(),
-                                            (context.getSource()).getEntity().getPitch());
-                                })
+                                .executes(context -> executeScale(
+                                        context.getSource(),
+                                        (context.getSource()).getEntity(),
+                                        (context.getSource()).getEntity().getPitch(),
+                                        DoubleArgumentType.getDouble(context, "scale"))
+                                )
+                        )
+                        .executes(context -> execute(
+                                context.getSource(),
+                                (context.getSource()).getEntity(),
+                                (context.getSource()).getEntity().getPitch())
+                        )
                 )
         );
     }
