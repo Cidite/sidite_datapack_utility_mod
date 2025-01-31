@@ -2,7 +2,6 @@ package com.github.cidite.commands;
 
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.arguments.DoubleArgumentType;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import net.minecraft.command.argument.EntityArgumentType;
 import net.minecraft.entity.Entity;
 import net.minecraft.server.command.CommandManager;
@@ -72,18 +71,14 @@ public class GetrotationCommand {
 
     //실행시 값을 확인함.
     private static int execute(ServerCommandSource source, Entity entity, double value) {
-        source.sendFeedback(() -> {
-            return Text.translatable("commands.data.entity.query", entity.getDisplayName(), value);
-        }, true);
+        source.sendFeedback(() -> Text.translatable("commands.data.entity.query", entity.getDisplayName(), value), true);
         return (int) value;
     }
     //값 확인 +스케일 곱셈
     private static int executeScale(ServerCommandSource source, Entity entity, double value, double scale) {
         value *= scale;
         double i = value;
-        source.sendFeedback(() -> {
-            return Text.translatable("commands.data.entity.query", entity.getDisplayName(), i);
-        }, true);
+        source.sendFeedback(() -> Text.translatable("commands.data.entity.query", entity.getDisplayName(), i), true);
         return (int) i;
     }
 
