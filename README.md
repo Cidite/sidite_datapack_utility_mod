@@ -15,7 +15,7 @@ Default: [target] = "@s", [location] = "~ ~ ~"
 
 Default: [target] = "@s", [rotation] = "~ ~"
 
-###	/chance <Chance> [true|false]
+###	/chance \<Chance\> [true|false]
 확률 테스트. true이면 모두에게 보여주고, false이면 자신만 보여집니다.(기본 false) 1 = 100%, 0.2 = 20%
 
 ###	/get_pos <x|y|z> [scale] [target]
