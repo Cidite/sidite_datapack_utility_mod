@@ -3,7 +3,7 @@ package com.github.cidite.commands;
 
 // /storage_operation <스토리지 id> <스토리지 경로> <add|remove|times|division|> <from|value>
 // ... <value> <값>
-// ... <from> <스토리지 id> <스토리지 경로>
+// ... <from> <스토리지 id> <스토리지 경로> <-- 미완성. 곧 구현 예정임
 
 // 스토리지를 쌩으로 계산하는 명령어
 
