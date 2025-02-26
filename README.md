@@ -15,8 +15,8 @@ Default: [target] = "@s", [location] = "~ ~ ~"
 
 Default: [target] = "@s", [rotation] = "~ ~"
 
-###	/chance <roll|value> <Chance>
-확률 테스트. roll이면 모두에게 보여주고, value이면 자신만 보여집니다. 1 = 100%, 0.2 = 20%
+###	/chance \<Chance\> [true|false]
+확률 테스트. true이면 모두에게 보여주고, false이면 자신만 보여집니다.(기본 false) 1 = 100%, 0.2 = 20%
 
 ###	/get_pos <x|y|z> [scale] [target]
 대상의 위치를 출력합니다. 
@@ -32,6 +32,9 @@ Default: [scale] = 1, [target] = "@s"
 현재 서버 틱을 출력합니다.
 
 Default: [scale] = 1
+
+###	/truekill
+실행자의 개체를 즉시 제거합니다.
 
 ## Note(참고)
 1.0.3 이하 버전은 [Fabric API](https://modrinth.com/mod/fabric-api) 모드가 필요합니다.
