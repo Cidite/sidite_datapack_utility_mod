@@ -1,7 +1,6 @@
 package com.github.cidite.commands;
 
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import net.minecraft.entity.Entity;
 import net.minecraft.server.command.CommandManager;
 import net.minecraft.server.command.ServerCommandSource;
@@ -25,6 +24,7 @@ public class TruekillCommand {
 
     private static int execute(ServerCommandSource source, Entity entity) {
         ServerPlayerEntity player = source.getPlayer();
+        //실행자가 플레이어일 경우 즉시 사망하기. 안그럼 무적됨.
         if (player != null) {
             player.setHealth(0.0f);
         }
