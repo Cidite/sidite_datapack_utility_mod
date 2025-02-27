@@ -1,6 +1,6 @@
 {
   "commands.chance.roll": "%s이(가) %s% 확률로 시도한 결과: %s",
-  "commands.chance.value": "%s% 확률로 시도: %s",
+  "commands.chance.value": "%s 확률로 시도: %s",
   "commands.get_tick.mspt": "mspt: %s",
   "commands.get_tick.nspt": "nspt: %s",
   "commands.get_tick.target_tps": "Target tps: %s",
