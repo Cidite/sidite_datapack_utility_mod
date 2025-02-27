@@ -1,4 +1,10 @@
 {
-  "commands.pos.success":"Moved %s to %s, %s, %s",
-  "commands.pos.success.target":"Moved %s to %s"
+  "commands.chance.roll": "%s rolled %s chance: %s",
+  "commands.chance.value": "%s chance: %s",
+  "commands.get_tick.mspt": "mspt: %s",
+  "commands.get_tick.nspt": "nspt: %s",
+  "commands.get_tick.target_tps": "Target tps: %s",
+  "commands.get_tick.tps": "tps: %s",
+  "commands.pos.success": "Moved %s to %s, %s, %s",
+  "commands.pos.success.target": "Moved %s to %s"
 }

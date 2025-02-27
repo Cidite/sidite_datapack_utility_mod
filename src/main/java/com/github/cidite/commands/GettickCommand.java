@@ -72,12 +72,13 @@ public class GettickCommand {
         //근데 이건 /tick query로 불러올수 있어서 쓰지 않는게 좋음.
         ServerTickManager serverTickManager = source.getServer().getTickManager();
         float f = serverTickManager.getTickRate();
-        source.sendFeedback(() -> Text.literal("target tps: " + (f)), true);
+        source.sendFeedback(() -> Text.translatableWithFallback("commands.get_tick.target_tps", "target tps: %s", f), true);
+
         return (int) (f * scale);
     }
 
     private static int executeTPS(ServerCommandSource source, float scale) {
-        //현재 tps 표시.
+        //현재 tps(Tick per seconds) 표시.
         ServerTickManager serverTickManager = source.getServer().getTickManager();
         long mspt = source.getServer().getAverageNanosPerTick();
         float target_tps = serverTickManager.getTickRate();
@@ -88,21 +89,21 @@ public class GettickCommand {
         }
 
         float finalTarget_tps = target_tps;
-        source.sendFeedback(() -> Text.literal("tps: " + (finalTarget_tps)), true);
+        source.sendFeedback(() -> Text.translatableWithFallback("commands.get_tick.tps", "tps: %s", (finalTarget_tps)), true);
         return (int) (target_tps * scale);
     }
 
     private static int executeMspt(ServerCommandSource source, float scale) {
-        //현재 mspt 표시. 1틱을 연산하는데 걸리는 시간(ms)
+        //현재 mspt(Milli seconds per tic) 표시. 1틱을 연산하는데 걸리는 시간(ms)
         float mspt = (float) source.getServer().getAverageNanosPerTick() / 1000000 ;
-        source.sendFeedback(() -> Text.literal("mspt: " + (mspt)), true);
+        source.sendFeedback(() -> Text.translatableWithFallback("commands.get_tick.mspt", "mspt: %s", (mspt)), true);
         return (int) (mspt * scale);
     }
 
     private static int executeNspt(ServerCommandSource source, float scale) {
-        //현재 nspt 표시. 나노초!
+        //현재 nspt(Nano seconds per tick) 표시. 나노초!
         long nspt = source.getServer().getAverageNanosPerTick();
-        source.sendFeedback(() -> Text.literal("nspt: " + (nspt)), true);
+        source.sendFeedback(() -> Text.translatableWithFallback("commands.get_tick.nspt", "nspt: %s", (nspt)), true);
         return (int) (nspt * scale);
     }
 }

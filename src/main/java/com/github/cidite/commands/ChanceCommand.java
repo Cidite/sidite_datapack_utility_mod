@@ -38,12 +38,14 @@ public class ChanceCommand {
         Random random = source.getWorld().getRandom();
         double randomValue = random.nextDouble();
         int result = (randomValue <= chance) ? 1 : 0;
+        double chance2 = chance * 100;
 
         if (roll) {
-            source.getServer().getPlayerManager().broadcast(Text.translatable("commands.random.roll", source.getDisplayName(), result, chance, chance), false);
+            source.getServer().getPlayerManager().broadcast(Text.translatableWithFallback("commands.chance.roll", "%s rolled %s chance: %s", source.getDisplayName(), chance2, result), false);
         } else {
-            source.sendFeedback(() -> Text.translatable("commands.random.sample.success", result), false);
+            source.sendFeedback(() -> Text.translatableWithFallback("commands.chance.value", "%s chance: %s", chance2, result), false);
         }
+
         return result;
     }
 }

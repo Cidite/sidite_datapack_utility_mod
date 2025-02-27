@@ -52,7 +52,7 @@ public class PosCommand {
         if (player != null) {
             player.requestTeleport(vec3d.x, vec3d.y, vec3d.z);
         }
-        source.sendFeedback(() -> Text.translatable("commands.pos.success", entity.getDisplayName(), formatFloat(vec3d.x), formatFloat(vec3d.y), formatFloat(vec3d.z)), true);
+        source.sendFeedback(() -> Text.translatableWithFallback("commands.pos.success", "Moved %s to %s, %s, %s", entity.getDisplayName(), formatFloat(vec3d.x), formatFloat(vec3d.y), formatFloat(vec3d.z)), true);
         return 1;
     }
 
@@ -63,7 +63,7 @@ public class PosCommand {
         if (player != null) {
             player.requestTeleport(vec3d.x, vec3d.y, vec3d.z);
         }
-        source.sendFeedback(() -> Text.translatable("commands.pos.success", entity.getDisplayName(), formatFloat(vec3d.x), formatFloat(vec3d.y), formatFloat(vec3d.z)), true);
+        source.sendFeedback(() -> Text.translatableWithFallback("commands.pos.success", "Moved %s to %s, %s, %s", entity.getDisplayName(), formatFloat(vec3d.x), formatFloat(vec3d.y), formatFloat(vec3d.z)), true);
         return 1;
     }
 

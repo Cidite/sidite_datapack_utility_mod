@@ -1,4 +1,10 @@
 {
+  "commands.chance.roll": "%s이(가) %s% 확률로 시도한 결과: %s",
+  "commands.chance.value": "%s% 확률로 시도: %s",
+  "commands.get_tick.mspt": "mspt: %s",
+  "commands.get_tick.nspt": "nspt: %s",
+  "commands.get_tick.target_tps": "Target tps: %s",
+  "commands.get_tick.tps": "tps: %s",
   "commands.pos.success":"%s을(를) %s, %s, %s(으)로 이동했습니다",
   "commands.pos.success.target":"%s을(를) %s에게로 이동했습니다"
 }
