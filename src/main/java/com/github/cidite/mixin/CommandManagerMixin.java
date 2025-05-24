@@ -26,6 +26,7 @@ public class CommandManagerMixin {
 		GetrotationCommand.register(this.dispatcher);
 		GettickCommand.register(this.dispatcher);
 		PosCommand.register(this.dispatcher);
+		ProfilerCommand.register(this.dispatcher);
 		RotCommand.register(this.dispatcher);
 		StorageOperationCommand.register(this.dispatcher);
 		TruekillCommand.register(this.dispatcher);
