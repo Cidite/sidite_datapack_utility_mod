@@ -14,7 +14,7 @@ public class ProfilerCommand {
                         .requires(source -> source.hasPermissionLevel(2))
                         .then(CommandManager.literal("push")
                                 .then(CommandManager
-                                        .argument("name", StringArgumentType.string())
+                                        .argument("name", StringArgumentType.greedyString())
                                         .executes(context -> executePush(
                                                 StringArgumentType.getString(context,"name"))
                                         )
