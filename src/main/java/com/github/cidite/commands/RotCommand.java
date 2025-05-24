@@ -34,22 +34,19 @@ public class RotCommand {
                                 RotationArgumentType.getRotation(context, "rotation"))
                         )
                 )
-                .executes(context -> executeDefault(
-                        context.getSource(),
-                        (context.getSource()).getEntity())
+                .executes(context -> {
+                    ServerCommandSource source = context.getSource();
+                    Vec2f vec2f = source.getRotation();
+                    source.getEntity().rotate(vec2f.y, vec2f.x);
+                    source.sendFeedback(() -> Text.translatable("commands.rotate.success", source.getDisplayName()), true);
+                    return 1;
+                }
                 )
         );
     }
 
     private static int execute(ServerCommandSource source, Entity entity, PosArgument rotation) {
         Vec2f vec2f = rotation.getRotation(source);
-        entity.rotate(vec2f.y, vec2f.x);
-        source.sendFeedback(() -> Text.translatable("commands.rotate.success", entity.getDisplayName()), true);
-        return 1;
-    }
-
-    private static int executeDefault(ServerCommandSource source, Entity entity) {
-        Vec2f vec2f = source.getRotation();
         entity.rotate(vec2f.y, vec2f.x);
         source.sendFeedback(() -> Text.translatable("commands.rotate.success", entity.getDisplayName()), true);
         return 1;
