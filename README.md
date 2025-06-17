@@ -36,5 +36,8 @@ Default: [scale] = 1
 ###	/truekill
 실행자의 개체를 즉시 제거합니다.
 
+###	/profiler <pop|push> <name>
+프로파일러 추적. **한번 push하면 무조건 pop 하세요!** 그렇지 않으면 프로파일러가 고장납니다. 또한 명령 블록은 지원하지 않습니다. Function 사용하세요.
+
 ## Note(참고)
 1.0.3 이하 버전은 [Fabric API](https://modrinth.com/mod/fabric-api) 모드가 필요합니다.
