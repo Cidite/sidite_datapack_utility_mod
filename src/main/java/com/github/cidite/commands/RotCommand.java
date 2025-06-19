@@ -14,7 +14,7 @@ public class RotCommand {
     public static void register(CommandDispatcher<ServerCommandSource> dispatcher) {
         dispatcher.register(
                 CommandManager.literal("rot")
-                        .requires(source -> source.hasPermissionLevel(2))
+                        .requires(CommandManager.requirePermissionLevel(2))
                 .then(CommandManager
                         .argument("target", EntityArgumentType.entity())
                         .then(CommandManager

@@ -46,7 +46,7 @@ public class StorageOperationCommand {
     public static final List<DataCommand.ObjectType> SOURCE_OBJECT_TYPES;
 
     public static void register(CommandDispatcher<ServerCommandSource> dispatcher) {
-        LiteralArgumentBuilder<ServerCommandSource> literalArgumentBuilder = CommandManager.literal("storage_operation").requires(source -> source.hasPermissionLevel(2));
+        LiteralArgumentBuilder<ServerCommandSource> literalArgumentBuilder = CommandManager.literal("storage_operation").requires(CommandManager.requirePermissionLevel(2));
         Iterator var2 = TARGET_OBJECT_TYPES.iterator();
 
         while(var2.hasNext()) {

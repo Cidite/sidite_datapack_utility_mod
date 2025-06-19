@@ -14,7 +14,7 @@ public class TruekillCommand {
     public static void register(CommandDispatcher<ServerCommandSource> dispatcher) {
         dispatcher.register(
                 CommandManager.literal("truekill")
-                        .requires(source -> source.hasPermissionLevel(2))
+                        .requires(CommandManager.requirePermissionLevel(2))
                 .executes(context -> execute(
                         context.getSource(),
                         (context.getSource()).getEntity())
