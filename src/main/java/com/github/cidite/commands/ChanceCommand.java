@@ -14,7 +14,6 @@ public class ChanceCommand {
     public static void register(CommandDispatcher<ServerCommandSource> dispatcher) {
         dispatcher.register(
                 CommandManager.literal("chance")
-                        .requires(source -> source.hasPermissionLevel(0))
                 .then(CommandManager
                         .argument("chance", DoubleArgumentType.doubleArg(0, 1))
                         .then(CommandManager
